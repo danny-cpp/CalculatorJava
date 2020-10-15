@@ -26,7 +26,7 @@ interface fundamentals {
  */
 interface errorHelpers {
     String let = "(let\\s+)";
-    String var = "[a-zA-Z][^a-zA-Z]+";
+    String var = "[a-zA-Z]{1}\\b";
     String open_br = "\\(\\s*";
     String close_br = "\\)\\s*";
     String operators = "[\\+, \\-, \\*, \\/, \\^]\\s*";
@@ -74,9 +74,11 @@ public class Lexer implements fundamentals, errorHelpers {
 
                 // If we find the legal object, stash it, and trim the math equation
                 if (m.find()) {
+
+                    System.out.println(s.substring(m.start(), m.end()));
+
                     input.Parsing(s.substring(m.start(), m.end()));
                     s = s.substring(m.end(), s.length() );
-                    System.out.println("what's left: " + s);
                     // As long as we find something, nothing's wrong
                     something_wrong = false;
                 }
@@ -120,7 +122,9 @@ public class Lexer implements fundamentals, errorHelpers {
 
     public static void main(String[] args) throws RuntimeError, IllegalAccessException {
         Lexer a = new Lexer();
-        a.analyze("(let x = 1) + x");
+        // a.analyze("(let x = 2) ^ (let y =3) + x");
+        // a.analyze("(let y = 3) ^ (let x =2)");
+        a.analyze("1+ (let x =1 ) + (let y =2 ) + ( 1+ x ) * ( 1+ y ) - (let x = y ) - (let y = 1 ) - x" );
     }
 
 }

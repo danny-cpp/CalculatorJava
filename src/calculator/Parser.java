@@ -1,5 +1,7 @@
 package calculator;
 
+import calculator.exception.RuntimeError;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,9 +12,8 @@ import java.util.regex.Pattern;
  */
 public class Parser {
 
-    Stack<Token> operation_stack = new Stack<>();
-    Queue<Token> output_queue = new ArrayDeque<>();
     List<Token> input_tokens = new LinkedList<>();
+    ShuntingYard RPN_structure = new ShuntingYard();
 
     /**
      * This function accepting string object that is checked by the lexer, parse
@@ -21,6 +22,8 @@ public class Parser {
      */
     protected void Parsing(String s) {
         s = s.trim();
+
+        // System.out.println("input s is: " + s);
 
         // If it is a bracket
         if (s.equals("(")) {
@@ -37,7 +40,8 @@ public class Parser {
         // If it is a number
         try {
             Integer tmp = Integer.parseInt(s);
-            Token tmp_num = new Token("number", tmp);
+            Double value = Double.valueOf(tmp);
+            Token tmp_num = new Token("number", value);
             input_tokens.add(tmp_num);
             return;
         }
@@ -90,11 +94,9 @@ public class Parser {
         }
     }
 
-    protected void listAll() {
-        for (Token x : input_tokens) {
-            System.out.print(x.getType() + " value is ");
-            System.out.println(x.getOperation());
-        }
+    protected void listAll() throws RuntimeError {
+        RPN_structure.RPN(input_tokens);
+
     }
 
     public static void main(String[] args) {
@@ -102,7 +104,8 @@ public class Parser {
         a.Parsing("      let           a        =");
         String test = "x";
         System.out.println(test.charAt(0));
-
+        HashMap<String, Double> h = new HashMap<>();
+        System.out.println(h.get(0));
 
 
     }
