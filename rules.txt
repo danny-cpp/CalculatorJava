@@ -1,0 +1,23 @@
+fundamentals:
+let = (let)
+var = [a-zA-Z]
+equal = (=)
+paren = [\(, \)]
+operator = [\+, \-, \*, \/, \^]
+optional_blank = "\s*"
+numbers = ([0-9]+)
+
+primitive_structure:
+setter = let + "\s" + var + optional_blank + equal + optional_blank
+var_num = (optional_blank(var|numbers)optional_blank)
+var_num_op = "(" + var_num + operator + optional_blank + ")"
+
+
+complex_combination:
+loader = setter + varnum |
+
+
+FSM:
+At the beginning, structure count will be 0, and structure_flag will be on, then it will scan
+until: 0 - end of statement -> structure count++, flag = flase
+       1 - "(" ->
