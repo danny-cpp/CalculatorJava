@@ -17,7 +17,7 @@ import static java.util.Map.entry;
 public class Token {
     private String type;
     private Object operation;
-    Token(String in_type, String in_operation) {
+    Token(String in_type, Object in_operation) {
         type = in_type;
         operation = in_operation;
     }
