@@ -200,6 +200,15 @@ public class ShuntingYard implements operator_precedence {
     }
 }
 
+
+// while (
+//         (there is an operator at the top of the operator stack)
+//         and (
+//                 (the operator at the top of the operator stack has greater precedence)
+//                 or (the operator at the top of the operator stack has equal precedence and the token is left associative))
+//         and (the operator at the top of the operator stack is not a left parenthesis))
+
+
 // while (!output_queue.isEmpty()) {
 //         System.out.print(output_queue.peek().getType() + " value is ");
 //         System.out.println(output_queue.peek().getOperation());

@@ -123,8 +123,9 @@ public class Lexer implements fundamentals, errorHelpers {
     public static void main(String[] args) throws RuntimeError, IllegalAccessException {
         Lexer a = new Lexer();
         // a.analyze("(let x = 2) ^ (let y =3) + x");
-        // a.analyze("(let y = 3) ^ (let x =2)");
-        a.analyze("1+ (let x =1 ) + (let y =2 ) + ( 1+ x ) * ( 1+ y ) - (let x = y ) - (let y = 1 ) - x" );
+        // a.analyze("1+ (let x =1 ) + (let y =2 ) + ( 1+ x ) * ( 1+ y ) - (let x = 2 ) + 3");
+        // a.analyze("1+ (let x =1 ) + (let y =2 ) + ( 1+ x ) * ( 1+ y ) - (let x = 2 ) - (let y = 1 ) - x" );
+        a.analyze("5 - 1 -1");
     }
 
 }
