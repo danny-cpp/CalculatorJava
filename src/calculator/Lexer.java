@@ -75,7 +75,7 @@ public class Lexer implements fundamentals, errorHelpers {
                 // If we find the legal object, stash it, and trim the math equation
                 if (m.find()) {
 
-                    System.out.println(s.substring(m.start(), m.end()));
+                    // System.out.println(s.substring(m.start(), m.end()));
 
                     input.Parsing(s.substring(m.start(), m.end()));
                     s = s.substring(m.end(), s.length() );
@@ -125,7 +125,7 @@ public class Lexer implements fundamentals, errorHelpers {
         // a.analyze("(let x = 2) ^ (let y =3) + x");
         // a.analyze("1+ (let x =1 ) + (let y =2 ) + ( 1+ x ) * ( 1+ y ) - (let x = 2 ) + 3");
         // a.analyze("1+ (let x =1 ) + (let y =2 ) + ( 1+ x ) * ( 1+ y ) - (let x = 2 ) - (let y = 1 ) - x" );
-        a.analyze("(let a = 2) +3 * a - 5");
+        a.analyze("(let y = 3) ^ (let x =2)");
     }
 
 }

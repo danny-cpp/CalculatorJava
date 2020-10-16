@@ -23,7 +23,7 @@ public class Parser {
     protected void Parsing(String s) {
         s = s.trim();
 
-        System.out.println("input s is: " + s);
+        // System.out.println("input s is: " + s);
 
         // If it is a bracket
         if (s.equals("(")) {
