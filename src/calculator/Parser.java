@@ -96,7 +96,7 @@ public class Parser {
 
     protected void listAll() throws RuntimeError {
         RPN_structure.RPN(input_tokens);
-        // System.out.println(RPN_structure.evaluate_RPN());
+        System.out.println(RPN_structure.evaluate_RPN());
     }
 
     public static void main(String[] args) {

@@ -57,7 +57,7 @@ public class ShuntingYard implements operator_precedence {
                         operator_stack.peek().getType().equals("bin_op") &&
 
                         // and the operator has higher precedence than the current
-                        precedence.get(operator_stack.peek().getOperation()) > precedence.get(t.getOperation()) &&
+                        precedence.get(operator_stack.peek().getOperation()) >= precedence.get(t.getOperation()) &&
 
                         // and the operator on top of the stack is not an open bracket
                         !operator_stack.peek().getOperation().equals("open")
@@ -105,9 +105,9 @@ public class ShuntingYard implements operator_precedence {
             operator_stack.pop();
         }
 
-        for (Token t : output_queue) {
-            System.out.println("value is: " + t.getOperation());
-        }
+        // for (Token t : output_queue) {
+        //     System.out.println("value is: " + t.getOperation());
+        // }
     }
 
 
