@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  */
 interface fundamentals {
     String let = "(let\\s+[a-zA-Z]\\s*)(=)\\s*";
-    String var = "[a-zA-Z]";
+    String var = "[a-zA-Z]\\s*";
     String open_br = "\\(\\s*";
     String close_br = "\\)\\s*";
     String operators = "[\\+, \\-, \\*, \\/, \\^]\\s*";
@@ -125,7 +125,7 @@ public class Lexer implements fundamentals, errorHelpers {
         // a.analyze("(let x = 2) ^ (let y =3) + x");
         // a.analyze("1+ (let x =1 ) + (let y =2 ) + ( 1+ x ) * ( 1+ y ) - (let x = 2 ) + 3");
         // a.analyze("1+ (let x =1 ) + (let y =2 ) + ( 1+ x ) * ( 1+ y ) - (let x = 2 ) - (let y = 1 ) - x" );
-        a.analyze("(let y = 3) ^ (let x = 2)");
+        a.analyze("(let a = 2) +3 * a - 5");
     }
 
 }

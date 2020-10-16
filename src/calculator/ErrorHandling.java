@@ -34,9 +34,7 @@ public class ErrorHandling implements errorHelpers {
         return true;
     }
 
-    protected static boolean structureFSM(String s) {
 
-    }
 
 
     public static void main(String[] args) throws SyntaxError {

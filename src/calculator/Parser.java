@@ -23,7 +23,7 @@ public class Parser {
     protected void Parsing(String s) {
         s = s.trim();
 
-        // System.out.println("input s is: " + s);
+        System.out.println("input s is: " + s);
 
         // If it is a bracket
         if (s.equals("(")) {
@@ -46,6 +46,15 @@ public class Parser {
             return;
         }
         catch (Exception e) {}
+
+        // Check if it is a variable
+        Pattern p = Pattern.compile("^[a-zA-Z]$");
+        Matcher m = p.matcher(s);
+        if (m.find()) {
+            Token tmp = new Token("var", s);
+            input_tokens.add(tmp);
+            return;
+        }
 
         // If it is a load object (let _ = )
         if (s.charAt(0) == 'l' && s.charAt(1) == 'e') {
@@ -84,14 +93,7 @@ public class Parser {
             return;
         }
 
-        // Check if it is a variable
-        Pattern p = Pattern.compile("^[a-zA-Z]$");
-        Matcher m = p.matcher(s);
-        if (m.find()) {
-            Token tmp = new Token("var", s);
-            input_tokens.add(tmp);
-            return;
-        }
+
     }
 
     protected void listAll() throws RuntimeError {
